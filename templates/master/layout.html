@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="dyn" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Earl Waller - {{ CurrentSection.name }}</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.earlwaller.com/modules/orchard.themes/Content/orchard.ico">
+    <link type="text/css" href="/static/css/master.css" rel="stylesheet">
+    {% block head-styles %}{% endblock %}
+    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+    <script type="text/javascript" src="/static/js/html5.js"></script>
+    <script type="text/javascript">
+        var _gaq=_gaq||[];
+        _gaq.push(["_setAccount","UA-23644221-1"]);
+        _gaq.push(["_trackPageview"]);
+        (function() {
+            var ga=document.createElement("script");ga.type="text/javascript";ga.async=true;
+            ga.src=(("https:" == document.location.protocol)?"https://ssl":"http://www")+".google-analytics.com/ga.js";
+            var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script>
+</head>
+<body>
+    <div id="layout-header">
+        <div id="layout-branding">
+            <a href="http://www.earlwaller.com/" id="layout-branding-home"></a>
+            <a href="http://www.earlwaller.com/" id="layout-branding-banner"></a>
+        </div>
+    </div>
+    <div id="layout-navigation">
+        <div class="zone zone-navigation">
+            <nav>
+                <ul class="menu menu-main">
+                    {% for section in LayoutSections  %}
+                        {% if section.is_current %}
+                            <li class="current">
+                        {% else %}
+                            <li>
+                        {% endif %}
+                            <a href="{{ section.path }}">{{ section.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        <div class="user-display">
+            {% comment %}<span class="user-actions"><a href="/admin/?ReturnUrl=%2F">Sign In</a></span>{% endcomment %}
+        </div>
+    </div>
+</div>
+
+
+{% comment %}<div id="layout-before-body" class="zone">
+    <div id="zone-before-body">
+        <div class="zone zone-before-body">
+            <article class="widget-html-widget widget">
+
+            </article></div>
+    </div>
+</div>{% endcomment %}
+
+{% block layout-body %}
+    <div id="layout-body" class="zone">
+        <div id="zone-body" class="without-sidebar">
+            <div class="zone zone-content">
+                {% block layout-zone-content %}
+                <article class="content-item page">
+                    <header>
+
+
+                    </header>
+                    <p>Welcome to Earl's new site.</p>
+                </article>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block layout-tripanel %}
+{% endblock %}
+
+<div id="layout-footer-pad"></div>
+
+{% block body-scripts %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 'master/layout.html' %}
+
+{% block head-styles %}
+    <link href="/static/css/photo-albums.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block layout-zone-content %}
+<article class="content-item photo">
+    <header>
+        <h1 class="page-title">{{ photo.name }}</h1>
+        <div class="metadata">
+            <div class="published">{{ photo.date }}</div>
+        </div>
+    </header>
+    <div class="image-item-details">
+        <img title="{{ photo.name }}" src="/static/photos/medium/{{ photo.id }}.png" alt="{{ photo.name }}" />
+    </div>
+</article>
+{% endblock %}

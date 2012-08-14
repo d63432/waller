@@ -1,0 +1,74 @@
+{% extends 'master/layout.html' %}
+
+{% block head-styles %}
+    <link href="/static/css/photo-albums.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/photo-lightbox.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block layout-zone-content %}
+    <article class="content-item photo-album-lightbox">
+        <header>
+            <h1 class="page-title">Photos</h1>
+        </header>
+        <div id="jquery-overlay" style="display: none;">
+        </div>
+        <div id="jquery-lightbox" style="display: none;">
+            <div id="lightbox-container-image-box">
+                <div id="lightbox-container-image">
+                    <img alt="Photo" id="lightbox-image" src="/static/images/lightbox-blank.gif">
+                    <div id="lightbox-nav">
+                        <a id="lightbox-nav-btnPrev" href="#" style="opacity: 0;"></a>
+                        <a id="lightbox-nav-btnNext" href="#" style="opacity: 0;"></a>
+                    </div>
+                    <div id="lightbox-loading">
+                        <a id="lightbox-loading-link" href="#">
+                            <img alt="Loading" src="/static/images/lightbox-ico-loading.gif">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="lightbox-container-image-data-box">
+                <div id="lightbox-container-image-data">
+                    <div id="lightbox-image-details">
+                        <h3 id="lightbox-image-details-caption"></h3>
+                    <span id="lightbox-image-details-currentNumber">
+                    </span>
+                    </div>
+                    <div id="lightbox-secNav">
+                        <a id="lightbox-secNav-btnClose" href="#">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul>
+            {% for photo in photos %}
+                <li>
+                    <article class="content-item photo">
+                        <h4><a href="/photos/{{ photo.name|slugify }}">{{ photo.name }}</a></h4>
+                        <a class="thumb" href="/static/photos/medium/{{ photo.id }}.png" style="width:120px; height:120px">
+                            <img title="{{ photo.name }}" src="/static/photos/thumbs/{{ photo.id }}.png" alt="{{ photo.name }}" style="{{ photo.style }}">
+                        </a>
+                        <div class="published">{{ photo.date }}</div>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
+{% endblock %}
+
+{% block body-scripts %}
+    <script type="text/javascript" src="/static/js/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.lightbox.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#jquery-overlay').appendTo('body').hide();
+            $('#jquery-lightbox').appendTo('body').hide();
+            $('.content-item.photo a.thumb').lightBox({
+                txtImage: 'Image',
+                txtOf: 'of',
+                delayAnimation: 300
+            });
+        });
+    </script>
+{% endblock %}

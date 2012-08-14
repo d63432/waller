@@ -1,0 +1,49 @@
+{% extends 'master/layout.html' %}
+
+{% block head-styles %}
+    <link href="/static/css/stars.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/synopsis.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block layout-zone-content %}
+    <article class="content-item page">
+        <header>
+            <h1 class="page-title">Products</h1>
+        </header>
+        <ul class="list-items content-items">
+            <li class="last first">
+                <article class="content-item product">
+                    <header>
+                        <h4>DVD</h4>
+                        <div class="metadata">
+                            <div class="stars-rating " title="Log-in to rate this item">
+                                <div class="stars-current-result stars-value-4 ">
+                                    <span class="star-1 a-star">*</span>
+                                    <span class="star-2 a-star">*</span>
+                                    <span class="star-3 a-star">*</span>
+                                    <span class="star-4 a-star">*</span>
+                                    <span class="star-5 a-star">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <img src="/static/photos/large/dvd.jpg" width="720" height="480">
+                    <br>
+                    Rock and Blues Soloing Instructional DVD<br>
+                    Price: <b>$25</b><br>
+                    <div>
+                        <p></p>
+                        <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
+                            <p></p>
+                            <p><input type="hidden" name="cmd" value="_s-xclick"></p>
+                            <p><input type="hidden" name="hosted_button_id" value="9A3SHV2T63GZ4"></p>
+                            <p><input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="PayPal - The safer, easier way to pay online!" border="0"></p>
+                            <p><img src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" height="1" width="1" border="0" alt=""></p>
+                            <p></p>
+                        </form>
+                    </div>
+                </article>
+            </li>
+        </ul>
+    </article>
+{% endblock %}
